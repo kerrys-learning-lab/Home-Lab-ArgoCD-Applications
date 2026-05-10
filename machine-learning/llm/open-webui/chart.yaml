@@ -1,0 +1,4 @@
+source:
+  repoURL: https://open-webui.github.io/helm-charts
+  targetRevision: 12.8.1
+  chart: open-webui

@@ -1,0 +1,4 @@
+source:
+  repoURL: git@gitlab.westsidestreet.net:kerrys-learning-lab/development-environment/home-lab.git
+  targetRevision: main
+  path: helm

@@ -1,0 +1,66 @@
+# Routing handled by the Ingress in the resources app
+route:
+  enabled: false
+
+ollama:
+  enabled: false
+
+# -- Enables the use of OpenAI APIs
+enableOpenaiApi: true
+
+# -- OpenAI base API URL to use. Defaults to the Pipelines service endpoint
+#    when Pipelines are enabled, and "https://api.openai.com/v1" if Pipelines
+#    are not enabled and this value is blank
+# @section -- OpenAI API configuration
+openaiBaseApiUrl: "http://nvidia-5080-llm-vllm-service:80/v1"
+
+databaseUrl: ""
+
+extraEnvVars:
+  - name: DATABASE_TYPE
+    value: postgresql
+  - name: DATABASE_USER
+    valueFrom:
+      secretKeyRef:
+        name: open-webui-db-credentials
+        key: username
+  - name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: open-webui-db-credentials
+        key: password
+  - name: DATABASE_HOST
+    value: open-webui-db-rw
+  - name: DATABASE_PORT
+    value: "5432"
+  - name: DATABASE_NAME
+    value: open-webui
+  - name: GLOBAL_LOG_LEVEL
+    value: DEBUG
+  # Default Chroma (SQLite) deadlocks on SMB-backed PVC; use pgvector instead
+  - name: VECTOR_DB
+    value: pgvector
+
+
+# -- Env vars added to the Open WebUI deployment, common across environments.
+#    Most up-to-date environment variables can be found here:
+#    https://docs.openwebui.com/getting-started/env-configuration/ (caution:
+#    environment variables defined in both `extraEnvVars` and `commonEnvVars`
+#    will result in a conflict. Avoid duplicates)
+commonEnvVars: []
+  # - name: RAG_EMBEDDING_ENGINE
+  #   value: "openai"
+
+# -- Env vars added from configmap or secret to the Open WebUI deployment.
+#    Most up-to-date environment variables can be found here:
+#    https://docs.openwebui.com/getting-started/env-configuration/ (caution:
+#    `extraEnvVars` will take precedence over the value from `extraEnvFrom`)
+extraEnvFrom: []
+  # - configMapRef:
+  #     name: my-config
+  # - secretRef:
+  #     name: my-secret
+
+# -- Configure runtime class
+# ref: <https://kubernetes.io/docs/concepts/containers/runtime-class/>
+runtimeClassName: ""

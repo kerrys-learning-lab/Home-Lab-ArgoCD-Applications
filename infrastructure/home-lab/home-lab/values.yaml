@@ -1,0 +1,10 @@
+image:
+  tag: 0.3.2
+
+ingress:
+  hostname: home-lab.westsidestreet.net
+  certificate: {}
+  tls: true
+
+secrets:
+  bucket_secret_name: bucket--machine-learning

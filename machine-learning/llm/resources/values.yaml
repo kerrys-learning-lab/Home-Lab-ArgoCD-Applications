@@ -1,0 +1,108 @@
+sealedSecrets:
+  nvidia-5080-llm-vllm-secrets:
+    type: Opaque
+    encryptedData:
+      # sealed-secret.sh encrypt --context nvidia-5080 llm nvidia-5080-llm-vllm-secrets
+      #
+      # Endpoint:     http://nas.westsidestreet.net:9000
+      # Bucket name:  machine-learning
+      # Access key:   w5BPQdGhGVJdMrnE49sT
+      s3endpoint: AgBYAOCR2DtFSKpxEPulxtxDJH9aIFQjOZ4Ws94xUKt/9CW6LpLMDKTtcylFFApTs1nnHFQBFGc9ElzENgNQ1uiydbh5eHDqFPIAPhyPfKalGfQVOq3/VpnOAkMD7N3IEW74kDWyq01NPFI423XUkpkp4qNNiU7q9AiIl3ATJllcW05H1w812euPk4Rtlx3rjzInr+F18oQdFEprZiGIYDlUpwQUuaQyzl/hHBjiuftpefsSa1MpbySLAfEDUxJjZ447iv2hVr2Le07XaerpxH0b3RYL3WaZi10jyOGLuSv8Wy/Kz+kTvQUHm8Poy88n7PGeDIaGhNAYFBDylC4t5qZCwIyYzyHwb4DVSOSarppwVc3VF0QFNAc1NVcaHgMzahDdaDSgogAloc3q7Har2+O6fh6k3wjBHydXmL1grZlIXP1wxmarP2vlN8xVKkdvuKNkrGyEkD4zzvWKJJjtEv6xc6H3wkZ+h6t6ViNsBHzxVOHJVTbVHs1bYN9U4PiewKeSLuyeQ7W7BzGnpq3+VrS+Zt3+2G2stB2NjKQfxMiuTSEMWOoGRgZSwBZ+cz5wMU30dyMo3ZwaHC3C5ObvGguEUeZDmSoGvz+3z8mGalj2R94UtRhd2MCDeoyRbkifN6mGnGRz3C1rlivW7VD0lApXTrrGuNC+dWRk32ZMbu1ENpAb/a6gMZePtN0hU8ST+qdaIfbUfRpjxELk49I8e+dKJaBLTi1BkLvT79UtLPmkTO9g
+      s3bucketname: AgAA8KCIPif95pkUlJ8Opi0Y6TwSfLhrVdJumsqQvPn/zjjowNzRszPVoQfgK4kb0MZvV/aYpAAHHgYFzUouGPxiVUjK0hRyxGCO6OgbD0IZLExOGQofiwGChIoW4vSN1EED+zG/dU/BoZFFSucsOgSsKg3vg+qVueqiXmXpFjv6F7SMQe/QlfH5IbzJv+fok3AERwJYEWmqaFclqdCytn4N1HgI3mv+x/QTaqIlTYipO++RyMhxiMCITzD71zQ1TUZ8NS0KFonZd8iNK4LtpHZB+Bs/QxDyShzAakXHUR5wUAKFIhPMtcu8rD6ujuYnzvtK4RjO4roImhaJlA0IvzVugRATxZNbvZKHN2MyG9+w6DtC1RBzIPvYj60ZsHbFhu1fSS2V+xke7bljloqDCRgkENRo6LHgqG4cJwj9o/1OaP54EyTteh1QuqsnMEue6VK1anOB966zzDm+EGCTVTAluzgaUws+JqMZ/js8vDQLAYh3AnSsMmoAau8tgQCUM1qbjAByTu8LCuJGM1c6Mi3/LuVhb9kYI6eQA3q5xj0A6xu+KgHgbSesOUltFVzK04BeRu6uKjJ82TzS4oyUzkE/34JV88bGWHJgCeMEoXaG0GRGz8INF4LUEwGiPeQQ2wEymVCNo53os2iCu516zzolj5yu6smR2367UDEsK0jaYWFLkLxGW5NucQdJvrC4usKpZhR3/j41claD2NaWwxWw
+      s3accesskeyid: AgDCFBi7W0C9AbYw/45Y62MCw1KZNm9vCaTBzNNm2ICHSshzTthf3rqD5wW5OtY4/rWfABed3g6ZCxLI+PyVPCQdfGfRC4lz1UhP+m/6bTVHic8EdVYxvqPFmBspJZtzigqe/3p1aRYPzPo9SOoGMgNIVtvLxo9jYTn2rJk/sDM1kKPSsh0Z0UrGCiR6MXqu0mCxQq+TGEvWqagO+wnLrtwSdr7zmL6m8ouGYmQp95UXE/K2xrV+zP2swmgMvNW0Bv69+FMyIfWYh88MWPOFNDS48BkBDPTHfj+HWqcwgsuCqrtNLSIqOI0Hm+Xdg7PbfmE0iHPhKzzuWKifQuGhAj4hWZNq2uZimLUfMFsCkm/cLvELCGTDua5izcuwBk0dv3fguLyfWfG4Dpia68hytN4uTKuzylNn0QudG/MQbhwJcCOg7Ua/Q6nOyEdTLG6Gt696W6Lw2PmRLu6OTZppVkD0SnfyuXH+ydGRmOA1IwejPmpR6K1jVwUlBcQUWgmqgHbvLFy33DlCrjNnUrZoFf4IrXH/Kc6ssWa3avnr7BNv8Q0aqcK2ta0TyjYk4S6RSfqwAXZI6CTCHRHDiB0UWbRLlnuBSiSmhMXFr3JfHYew2GzC92mpvzyhIazNcM+NJZeyrWiBPXFICExUH+Aci2p9s8s4hA3VfbTZ3TBgygD1UeJRrsVZKYe7+P8mGqgjsOGDTgFrRfUYduHzEVKG6N0bcRgUBA==
+      s3accesskey: AgC+8NLUBpQ0ZpHfX7N0ZoonltcYf7qLDRFaF/eHf8aCBD2uDuokARNfvALaCG/kI91yUC+uue2nCJRFQcQm8rKx7/ig40XK7mVi9p4rdNuQgU9Dt6+kaNcAohc6wv6S+E/0PH97SUNdKzzzx2qs5px9b0OCd1Kf3RbWQQWaKJ99XOCTxVXrCKH0xnYiF908XFmRIwrAZrtt+jurlGd3FmPLjFuYP3/dSWWO4cwU2oDbf9XCxPgVaMAKuK4aKu/an96Rf4cKWmgBQvHcHbUqDeMt2+MozJYwHWORk+MExNkCRr4zyQ1xU6P0fCf5hQndNTEgabqofJZmu8zKpdontEL9mTU8siRy5mW2q0isf0U68wJGWsyrAvNnO7lUTWIs3QY4puLw8FMJI80LQ5DKHWNUNWAtNa3Mq2lrqC+9XOCewy4c7DwaixAeVC3/NiCHNUZFasiw7y/yUq5xtu/kwVqnwfS+KKJFOBLqO1jyJldGVt92HdfvWpe93F0za/UuavXdpXgocZWege4l69kC/Ofo5W378/NOZMKyk1aCgWFb8pnruMJlCIvO3FjufReOT1eW5VZTxRboHqgSm1DJuuNVzkjJ5eRUytxhDXBGsG8NzMXJQalahbnMOvnbERhl74GkfWoofIbMDwinjisD6c4DjAHZEHlnBMU0n8fI3jtJUICCqn14EcreSF44/fc3ARrft7OHpKkUMfJ4pEfUzmQtPS39iBqsqKCVm5aEa/lHQD3lMgu1izyB
+  open-webui-db-credentials:
+    # sealed-secret.sh encrypt --context nvidia-5080 llm open-webui-db-credentials
+    #
+    # Username: open-webui
+    type: Opaque
+    encryptedData:
+      username: AgB/JzhUBgF1DBConYJeNna2kF6p6rrvDwgO+ZMIebZKF323S9aCnxBftvenWemNk520GBsQvSNaUmhArkuf9abNDxBPdrYeTNf329jrCz1sLdB+C4XvHorXcdi4ao72mnUoQK7wsk4YYc0GnBaehRTsKS6OfImGViNb987iT9tbN1zbLsgHS3l2bYvW81q+dbbCvyn+VcPIEnBDCYWgc0c2BXMxwg+EM72RS951F1gkvceHRsuJCTl/UpgokyqdwBQzakaa1crdlvBRDvnsIRMuGzhLt1OVP8wcRr2rBlCgw3PQgLa+e4ddk+uwJ94g/1yO6/mZmCh+2oceZmLGXkUcHti/b7RPZW01b7woEa5tX2WTK+6yB8/rT8nUnxmVPiiebV5tANy3gI4KUhJSM/UP/ubH1JKT8PKs4cOt9d4zmfrlY2L6hNQvQnBDBHf5OMRBhpyujHf38aVoO0wJC5iJQQhYFXL/Yjzz4nnrTYD8jnAIpVPgAxgJuBCGRY13TLMa1YUWICmobMDxFYMjR3Urb6oNH3Jzl6lDoEkCBFexGknphIbIeIq9PA5rlqTXQ69CqfFcfRnYzxo0oRUi1DDbBKszFPyntvDn7MIOSmhTINL/gDFksOW3jb93YDsyp6OU1PEwXpeX7j02BXJ+CzZd7zeeM/huKion0ZGHTqdwY4pqjHm/Fjdm0j6cb5QbI0AhPiEkfIg3L9Op
+      password: AgAzU5sklztwFBgx1ovDLsnKviOmGwatPK6sVX0D/ES6HEOp1fChI5MgfpbaE8PxJ3HyV11lZp1FNaIaVWHX1PJlJ7vxRfnOM3SE+twxX5i9rrtXrXnggjVjI0Svgih+x3ZCcw25ka6pEwcOG9/Dq93aQ8WWojn4CLtxfxTiG/KLSXwHQpY6ds8BT8wm7Oz5iXujkYtldWPXeIxslzM4joEuIdwgeoRyR52e6UncFv+3KVZ7z8P8y10OD4FBKPz1zpmGG0jkiwBvQqjX4IfeG5coCwufq8biDFIl8vTgAR2MHMkGJSsPi1O8eMnbU/Oiefk0FX8gPxMTXycGbhuLrspOSKmOSqZ3eD30AdMlA6MqzBix6tqbVzoq4iwQRarYBFQh3a3o6h5XTR8DNu6q6xecvX5yR5v4EXNexL1UnAPH5PNOvpP2n37/a2Wb8DwUIBea3gqN008T/oT3bWvF/bK3+3XH68gkhSaE/Sew3edMFG9j+/TVsO/4kUcAz7yUD5lUx4qhWiJA31H2hfNt2atQqvyMlgTiNgr7fNumjbofrFHSUcpRFVYJItzbABBipPKdJh75hxLtO4/OObdsl8aw++r/B4riohOfeucMMZ+f9nat3Q5mYkvQCiSCWctmhQuICGUZt2jE3gBq3Y9A5ASJIJl31YPduiL7hMOuQbiKM4j91q5YuMuVAXR/PhQXGX0NNWas9zy0hlPjCotIBW7DiuKnAmhCdUsWYFbwy8vb6eX8N2A=
+
+certificates:
+  llm-tls:
+    secretName: llm-tls
+    dnsNames:
+      - llm.westsidestreet.net
+    issuerRef:
+      name: acme-letsencrypt-cluster-issuer
+      kind: ClusterIssuer
+
+resources:
+  - apiVersion: traefik.io/v1alpha1
+    kind: Middleware
+    metadata:
+      name: strip-vllm-prefix
+    spec:
+      stripPrefix:
+        prefixes:
+          - /vllm
+
+  - apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: llm-api-ingress
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.middlewares: llm-strip-vllm-prefix@kubernetescrd
+    spec:
+      ingressClassName: traefik
+      tls:
+        - hosts:
+            - llm.westsidestreet.net
+          secretName: llm-tls
+      rules:
+        - host: llm.westsidestreet.net
+          http:
+            paths:
+              - path: /vllm
+                pathType: Prefix
+                backend:
+                  service:
+                    name: nvidia-5080-llm-vllm-service
+                    port:
+                      name: service-port
+
+  - apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: llm-ui-ingress
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+    spec:
+      ingressClassName: traefik
+      tls:
+        - hosts:
+            - llm.westsidestreet.net
+          secretName: llm-tls
+      rules:
+        - host: llm.westsidestreet.net
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: nvidia-5080-llm-open-webui
+                    port:
+                      number: 80
+
+cnpg:
+  open-webui-db:
+    instances: 1
+    storage:
+      size: 10Gi
+    bootstrap:
+      initdb:
+        database: open-webui
+        owner: open-webui
+        secret:
+          name: open-webui-db-credentials
+    postgresql:
+      parameters:
+        shared_buffers: "128MB"
+    monitoring:
+      enablePodMonitor: false

@@ -1,0 +1,4 @@
+source:
+  repoURL: git@gitlab.westsidestreet.net:kerrys-learning-lab/helm-charts/vllm.git
+  targetRevision: kerrys-learning-lab
+  path: examples/deployment/chart-helm
