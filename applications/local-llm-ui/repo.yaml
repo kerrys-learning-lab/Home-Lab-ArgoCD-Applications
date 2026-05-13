@@ -1,0 +1,4 @@
+source:
+  repoURL: git@gitlab.westsidestreet.net:kerrys-learning-lab/home-lab/local-llm-ui.git
+  targetRevision: main
+  path: helm
