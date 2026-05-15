@@ -46,7 +46,7 @@ resources:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.middlewares: strip-vllm-prefix@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: home-lab-local-inference-strip-vllm-prefix@kubernetescrd
     spec:
       ingressClassName: traefik
       tls:
