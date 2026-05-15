@@ -1,5 +1,5 @@
 sealedSecrets:
-  home-lab-local-inference-secrets:
+  home-lab-local-inference--vllm-secrets:
     type: Opaque
     encryptedData:
       # sealed-secret.sh  encrypt --context  nvidia-5080  home-lab-local-inference  home-lab-local-inference--vllm-secrets
