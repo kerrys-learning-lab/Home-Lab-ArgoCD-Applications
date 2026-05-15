@@ -21,13 +21,13 @@ image:
     - --dtype
     - half
     - --max-model-len
-    - "32768"
+    - 24k
     - --served-model-name
     - active-model
 
     # Cache config:
     - --gpu-memory-utilization
-    - "0.999"
+    - "0.95"
     # The following setting will not be available until vLLM 0.21.0 is
     # incoporated into NVIDIA's image (current vLLM for 26.04 is 0.19.0)
     # - --kv-cache-dtype
