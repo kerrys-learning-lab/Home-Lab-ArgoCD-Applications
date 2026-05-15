@@ -27,11 +27,15 @@ image:
 
     # Cache config:
     - --gpu-memory-utilization
-    - "0.92"
+    - "0.95"
     # The following setting will not be available until vLLM 0.21.0 is
     # incoporated into NVIDIA's image (current vLLM for 26.04 is 0.19.0)
     # - --kv-cache-dtype
     # - turboquant_4bit_nc
+    #
+    # So, for now...
+    - --kv-cache-dtype
+    - fp8
 
 
 deploymentStrategy:
