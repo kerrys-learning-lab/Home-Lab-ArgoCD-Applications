@@ -101,10 +101,10 @@ cnpg:
         owner: open-webui
         secret:
           name: open-webui-db-credentials
-    extensions:
-      - vector
     postgresql:
       parameters:
         shared_buffers: "128MB"
+      extensions:
+        - vector
     monitoring:
       enablePodMonitor: false
