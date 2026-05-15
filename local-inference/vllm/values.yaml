@@ -1,55 +1,6 @@
-  # 1. --gpu-memory-utilization 0.95 (default 0.9)
-  # - What it does: fraction of total VRAM vLLM is allowed to reserve
-  # for itself (weights + KV + activations). The remainder is left for
-  # the driver, display, other processes.
-  # - Why for you: your GPU isn't driving a display, so the 10% buffer
-  # is overkill. Going to 0.95 reclaims ~800MB on a 16GB card. That's
-  # roughly 4K extra tokens of FP16 KV cache — meaningful.
-  # - Tradeoff: slightly higher OOM risk if something else competes for
-  # VRAM. Headless dedicated card → very low risk.
-
-  # 2. --kv-cache-dtype fp8 (default auto → FP16)
-  # - What it does: stores K and V in FP8 instead of FP16. Halves KV
-  # cache memory.
-  # - Why for you: when we get to 14B, this is the difference between
-  # "8–16K context" and "32K+ context." Even on 7B, it lets you push the
-  #  model length higher with no quality cost worth measuring on coding
-  # tasks.
-  # - Tradeoff: very small accuracy hit (~no measurable impact on
-  # HumanEval-class benchmarks); requires Ada/Hopper/Blackwell — your
-  # 5080 (Blackwell) is fine.
-  # - Caveat: on first deploy, watch logs for any FP8 calibration
-  # warnings; modern vLLM autoscales but occasionally a model needs
-  # --calculate-kv-scales.
-
-  # 3. --max-model-len <N> (default: model's native max, often 128K for
-  # Qwen2.5)
-  # - What it does: caps the context window vLLM reserves KV cache slots
-  #  for. KV cache grows linearly with this.
-  # - Why for you: the default for Qwen2.5-Coder is 128K — vLLM won't
-  # actually allocate 128K worth of cache (that'd be impossible on
-  # 16GB), but the calc affects max-num-seqs scheduling. Setting an
-  # explicit cap that matches your real use lets vLLM budget more
-  # efficiently.
-  # - Recommendation: 32768 (32K) for coding work — covers most files +
-  # meaningful chat history. Drop to 16384 if you want more
-  # concurrent-sequence slack.
-
-  # 4. --swap-space <GB> (default 4)
-  # - What it does: host RAM (CPU) reserved for swapping out paused KV
-  # cache when concurrent sequences exceed GPU capacity.
-  # - Why for you: you said you don't mind spending host RAM. Bumping
-  # this gives the scheduler more flexibility under multi-user load
-  # (e.g., when both you and a Continue.dev session hit the server).
-  # Default 4GB is usually fine for solo use; bump to 8GB if you ever
-  # expect 2+ concurrent sessions.
-  # - Pod-level constraint: your current pod has memory: 16Gi limit.
-  # --swap-space 8 against a 16Gi pod is fine but tight; if you go
-  # higher, also bump the pod's memory limit.
-
 image:
   repository: nvcr.io/nvidia/vllm
-  tag: 26.02-py3
+  tag: 26.04-py3
   command:
     - vllm
     - serve
@@ -58,14 +9,6 @@ image:
     - "0.0.0.0"
     - "--port"
     - "8000"
-    # - --gpu-memory-utilization
-    # - "0.95"
-    # - --kv-cache-dtype
-    # - fp8
-    # - --max-model-len
-    # - "32768"
-    # - --swap-space
-    # - "8"
     - --served-model-name
     - Qwen2.5-Coder-14B-Instruct-AWQ
 
@@ -92,7 +35,7 @@ livenessProbe:
 extraInit:
   pvcStorage: 50Gi
   awsEc2MetadataDisabled: true
-  s3modelpath: model/Qwen2.5-Coder-14B-Instruct-AWQ
+  s3modelpath: models/Qwen2.5-Coder-14B-Instruct-AWQ
   modelDownload:
     # Default image (2.6.4) DOES NOT WORK
     image:
