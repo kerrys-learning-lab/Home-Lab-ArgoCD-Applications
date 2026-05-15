@@ -1,4 +1,4 @@
 source:
   repoURL: https://gitlab.westsidestreet.net/api/v4/projects/40/packages/helm/stable
-  targetRevision: 0.4.0
+  targetRevision: 0.4.1
   chart: resources
