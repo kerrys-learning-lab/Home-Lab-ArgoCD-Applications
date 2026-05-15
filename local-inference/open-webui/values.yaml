@@ -12,7 +12,7 @@ enableOpenaiApi: true
 #    when Pipelines are enabled, and "https://api.openai.com/v1" if Pipelines
 #    are not enabled and this value is blank
 # @section -- OpenAI API configuration
-openaiBaseApiUrl: "http://nvidia-5080-llm-vllm-service:80/v1"
+openaiBaseApiUrl: "https://llm.westsidestreet.net/vllm/v1"
 
 databaseUrl: ""
 

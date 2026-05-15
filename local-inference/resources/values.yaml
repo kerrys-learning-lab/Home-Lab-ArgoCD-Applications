@@ -46,7 +46,7 @@ resources:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.middlewares: llm-strip-vllm-prefix@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: strip-vllm-prefix@kubernetescrd
     spec:
       ingressClassName: traefik
       tls:
@@ -101,6 +101,8 @@ cnpg:
         owner: open-webui
         secret:
           name: open-webui-db-credentials
+    extensions:
+      - vector
     postgresql:
       parameters:
         shared_buffers: "128MB"

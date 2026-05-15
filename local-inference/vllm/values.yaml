@@ -34,6 +34,9 @@ image:
     # - turboquant_4bit_nc
     #
     # So, for now...
+    #
+    # NOTE: When turboquant becomes available, see if model length can be
+    #       adjusted
     - --kv-cache-dtype
     - fp8
 
