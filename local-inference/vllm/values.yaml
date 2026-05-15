@@ -111,7 +111,7 @@ extraContainers:
     args:
       - while true; do sleep 3000; done
     volumeMounts:
-      - name: home-lab-local-inference-storage
+      - name: home-lab-local-inference--vllm-storage
         mountPath: /data
 
 # S3 credentials are provided via a SealedSecret named "home-lab-local-inference-secrets"
