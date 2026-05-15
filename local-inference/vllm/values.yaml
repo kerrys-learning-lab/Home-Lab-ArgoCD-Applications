@@ -5,23 +5,32 @@ image:
     - name: VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS
       value: "1"
   command:
+    # https://docs.vllm.ai/en/stable/cli/serve/#vllm-serve
+
     - vllm
     - serve
     - /data/
-    - "--host"
-    - "0.0.0.0"
-    - "--port"
+
+    # Frontend config
+    - --host
+    - 0.0.0.0
+    - --port
     - "8000"
-    - --gpu-memory-utilization
-    - "0.95"
-    - --kv-cache-dtype
-    - fp8
+
+    # Model config:
+    - --dtype
+    - half
     - --max-model-len
     - "32768"
-    - --swap-space
-    - "8"
     - --served-model-name
-    - Qwen2.5-Coder-14B-Instruct-AWQ
+    - active-model
+
+    # Cache config:
+    - --gpu-memory-utilization
+    - "0.92"
+    - --kv-cache-dtype
+    - turboquant_4bit_nc
+
 
 deploymentStrategy:
   type: Recreate
