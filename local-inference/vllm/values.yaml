@@ -27,7 +27,7 @@ image:
 
     # Cache config:
     - --gpu-memory-utilization
-    - "0.95"
+    - "0.999"
     # The following setting will not be available until vLLM 0.21.0 is
     # incoporated into NVIDIA's image (current vLLM for 26.04 is 0.19.0)
     # - --kv-cache-dtype
