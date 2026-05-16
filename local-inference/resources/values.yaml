@@ -95,16 +95,10 @@ cnpg:
     instances: 1
     storage:
       size: 10Gi
-    bootstrap:
-      initdb:
-        database: open-webui
-        owner: open-webui
-        secret:
-          name: open-webui-db-credentials
-    postgresql:
-      parameters:
-        shared_buffers: "128MB"
-      extensions:
-        - vector
+    owner: open-webui
+    secret: open-webui-db-credentials
+    parameters:
+      shared_buffers: "128MB"
+    vector: true
     monitoring:
       enablePodMonitor: false

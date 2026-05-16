@@ -34,7 +34,7 @@ extraEnvVars:
   - name: DATABASE_PORT
     value: "5432"
   - name: DATABASE_NAME
-    value: open-webui
+    value: open-webui-db
   - name: GLOBAL_LOG_LEVEL
     value: DEBUG
   # Default Chroma (SQLite) deadlocks on SMB-backed PVC; use pgvector instead
