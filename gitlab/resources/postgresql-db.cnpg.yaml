@@ -5,7 +5,7 @@ metadata:
   name: gitlab
 spec:
   instances: 1
-  imageName: registry.westsidestreet.net/home-lab/gitlab-postgresql:17.10.0-gitlab-19-x.14
+  imageName: registry.westsidestreet.net/home-lab/gitlab-postgresql:17.10.0-gitlab-19-x
   bootstrap:
     initdb:
       database: production
