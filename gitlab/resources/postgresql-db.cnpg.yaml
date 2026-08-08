@@ -9,6 +9,7 @@ spec:
   bootstrap:
     initdb:
       owner: gitlab
+      database: gitlabhq_production
       secret:
         name: production-db--basic-auth
   storage:
