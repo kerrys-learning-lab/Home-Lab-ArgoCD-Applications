@@ -31,6 +31,8 @@ spec:
         login: true
         passwordSecret:
           name: registry-metadata-db--basic-auth
+        connectionLimit: -1
+        inherit: true
   postgresql:
     parameters:
       max_connections: "250"
@@ -64,8 +66,11 @@ spec:
     #   - pg_trgm
     # Ref: https://docs.gitlab.com/charts/advanced/external-db/
     - name: amcheck
+      ensure: present
     - name: btree_gist
+      ensure: present
     - name: pg_trgm
+      ensure: present
 ---
 # ============================================================================
 # Performs the equivalent of 'CREATE DATABASE ...' as required here:
