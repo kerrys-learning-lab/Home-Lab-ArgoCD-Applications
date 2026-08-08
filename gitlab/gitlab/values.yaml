@@ -21,7 +21,6 @@ global:
     enabled: true
   psql:
     host: gitlab-pg-rw
-    database: production-db
     password:
       useSecret: true
       secret: production-db--basic-auth
