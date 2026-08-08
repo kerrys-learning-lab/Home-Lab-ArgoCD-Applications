@@ -16,6 +16,12 @@ spec:
     size: 10Gi
     pvcTemplate:
       storageClassName: cnpg-local-path
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      memory: 4Gi
   # Performs the equivalent of 'CREATE USER ...' as required here:
   # https://docs.gitlab.com/charts/charts/registry/metadata_database/
   managed:
@@ -25,6 +31,21 @@ spec:
         login: true
         passwordSecret:
           name: registry-metadata-db--basic-auth
+  postgresql:
+    parameters:
+      max_connections: 250
+
+      shared_buffers: 1GB           # 25% of limit; was the 128MB default
+      effective_cache_size: 2GB     # planner hint; node is shared, stay conservative
+      work_mem: 8MB
+      maintenance_work_mem: 256MB
+
+      # Observability
+      shared_preload_libraries: pg_stat_statements
+      pg_stat_statements.max: 5000
+      pg_stat_statements.track: top
+
+      random_page_cost: 1.1         # local-path SSD, not spinning disk
 ---
 # ============================================================================
 apiVersion: postgresql.cnpg.io/v1

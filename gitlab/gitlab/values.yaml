@@ -72,7 +72,9 @@ registry:
       key: password
     migrations:
       enabled: true
-
+  hpa:
+    minReplicas: 4
+    maxReplicas: 10
 # Temporarily disabling for ArgoCD deployment
 upgradeCheck:
   enabled: false
