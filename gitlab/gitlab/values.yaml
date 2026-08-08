@@ -1,0 +1,78 @@
+# ============================================================================
+# NOTE: Starting with GitLab 19 (this release):
+#         - Ingress is deprecated in favor of Gateway API (using Envoy)
+#         - An external Postgres 17 database is required, with the following
+#           extensions:
+#             - amcheck
+#             - btree_gist
+#             - pg_trgm
+#         - An external Redis is required
+# ----------------------------------------------------------------------------
+global:
+  hosts:
+    domain: westsidestreet.net
+  gatewayApi:
+    configureCertmanager: false
+  kas:
+    enabled: true
+    minReplicas: 1 # Default: 2
+    maxReplicas: 1 # Default: 10
+  pages:
+    enabled: true
+  psql:
+    host: production-rw
+    password:
+      useSecret: true
+      secret: production-db--basic-auth
+      key: password
+  redis:
+    host: redis
+    auth:
+      enabled: false
+  shell:
+    replicaCount: 1
+  appConfig:
+    object_store:
+      enabled: true
+      connection:
+        secret: rails-storage--s3
+# Ref: https://docs.gitlab.com/charts/charts/gitlab/
+gitlab:
+  # Ref: https://docs.gitlab.com/charts/charts/gitlab/gitaly/
+  gitaly:
+    persistence:
+      storageClass: local-path
+      size: 50Gi
+  sidekiq:
+    # NOTE: Trying to reduce the number of open connections to PG due to
+    #       constantly reaching max:
+    minReplicas: 1
+    maxReplicas: 2
+    concurrency: 10
+  toolbox:
+    backups:
+      objectStorage:
+        config:
+          secret: external-backup--s3cfg
+      cron:
+        enabled: true
+        schedule: "@weekly"
+registry:
+  enabled: true
+  storage:
+    secret: registry-storage--s3
+    redirect:
+      disable: true
+  database:
+    enabled: true
+    name: registry
+    user: registry
+    password:
+      secret: registry-metadata-db--basic-auth
+      key: password
+    migrations:
+      enabled: true
+
+# Temporarily disabling for ArgoCD deployment
+upgradeCheck:
+  enabled: false
