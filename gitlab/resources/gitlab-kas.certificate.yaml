@@ -5,8 +5,8 @@ metadata:
 spec:
   secretName: kas-tls
   dnsNames:
-    - kas.westsidestreet.net
     - kas-gitlab-19.westsidestreet.net
+    - kas.westsidestreet.net
   issuerRef:
     kind: ClusterIssuer
     name: acme-letsencrypt-cluster-issuer

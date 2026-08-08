@@ -5,10 +5,10 @@ metadata:
 spec:
   secretName: pages-tls
   dnsNames:
-    - pages.westsidestreet.net
-    - "*.pages.westsidestreet.net"
     - pages-gitlab-19.westsidestreet.net
     - "*.pages-gitlab-19.westsidestreet.net"
+    - pages.westsidestreet.net
+    - "*.pages.westsidestreet.net"
   issuerRef:
     kind: ClusterIssuer
     name: acme-letsencrypt-cluster-issuer

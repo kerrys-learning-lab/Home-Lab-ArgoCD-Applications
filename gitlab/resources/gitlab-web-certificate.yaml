@@ -5,8 +5,8 @@ metadata:
 spec:
   secretName: gitlab-tls
   dnsNames:
-    - gitlab.westsidestreet.net
     - gitlab-19.westsidestreet.net
+    - gitlab.westsidestreet.net
   issuerRef:
     kind: ClusterIssuer
     name: acme-letsencrypt-cluster-issuer

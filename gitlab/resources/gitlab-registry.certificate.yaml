@@ -5,8 +5,8 @@ metadata:
 spec:
   secretName: registry-tls
   dnsNames:
-    - registry.westsidestreet.net
     - registry-gitlab-19.westsidestreet.net
+    - registry.westsidestreet.net
   issuerRef:
     kind: ClusterIssuer
     name: acme-letsencrypt-cluster-issuer
