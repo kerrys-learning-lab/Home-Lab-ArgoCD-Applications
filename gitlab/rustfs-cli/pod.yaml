@@ -8,7 +8,7 @@ spec:
       image: docker.io/rustfs/rc:v0.1.30
       env:
         - name: RUSTFS_URL
-          value: http://rustfs-svc:9000
+          value: http://gitlab--rustfs-svc:9000
         - name: GITLAB_BUCKET_LIST
           value:
             git-lfs
