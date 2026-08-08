@@ -44,6 +44,10 @@ Generally speaking, the process is:
 
 3.  On the *new* GitLab, use Ansible to add the repositories to ArgoCD (if new ArgoCD)
 
+## Postrequisites
+
+1.  Save the Sealed Secret key(s) from the *new* GitLab
+
 ## Random Notes
 
 1.  Generating a password/token:
