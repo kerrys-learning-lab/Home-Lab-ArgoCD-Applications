@@ -1,0 +1,4 @@
+source:
+  type: helm
+  repoURL: https://charts.gitlab.io
+  targetRevision: 0.91.0
