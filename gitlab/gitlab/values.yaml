@@ -20,7 +20,7 @@ global:
   pages:
     enabled: true
   psql:
-    host: production-rw
+    host: gitlab-pg-rw
     password:
       useSecret: true
       secret: production-db--basic-auth
