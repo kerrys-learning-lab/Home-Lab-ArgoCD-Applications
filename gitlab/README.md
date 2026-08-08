@@ -42,6 +42,8 @@ Generally speaking, the process is:
 
     NOTE: After applying the secrets above, restart the `sealed-secrets` Pod(s)
 
+3.  On the *new* GitLab, use Ansible to add the repositories to ArgoCD (if new ArgoCD)
+
 ## Random Notes
 
 1.  Generating a password/token:
