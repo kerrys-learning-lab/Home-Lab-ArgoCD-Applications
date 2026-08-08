@@ -41,7 +41,6 @@ spec:
       maintenance_work_mem: 256MB
 
       # Observability
-      shared_preload_libraries: pg_stat_statements
       pg_stat_statements.max: "5000"
       pg_stat_statements.track: top
 
