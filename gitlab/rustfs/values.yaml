@@ -8,3 +8,5 @@ mode:
 affinity:
   podAntiAffinity:
     enabled: false
+ingress:
+  enabled: false
