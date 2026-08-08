@@ -22,6 +22,7 @@ spec:
             gitlab-dependency-proxy
             gitlab-backups
             gitlab-tmp
+            gitlab-registry
       envFrom:
         - secretRef:
             name: rustfs--keys
