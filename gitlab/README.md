@@ -8,10 +8,8 @@ NOTE: The instructions below assume we are still resource-constrained and
       therefore need to move data and VMs around carefully.
 
 Generally speaking, the process is:
-  - May need to scale down the ArgoCD ApplicationSet controller so that ArgoCD
-    does not pick up intermediate changes.
   - Stand up a new GitLab instance at the new version in a Proxmox VM
-    on the temporary host
+    on the temporary Proxmox host
   - Migrate the data from the old GitLab to the new GitLab using direct
     transfer
   - Switch the `gitlab.westsidestreet.net` DNS A record from the old
@@ -47,6 +45,10 @@ Generally speaking, the process is:
 ## Postrequisites
 
 1.  Save the Sealed Secret key(s) from the *new* GitLab
+
+2.  Update SSH keys in ArgoCD
+
+3.  Update Helm repo project IDs in ArgoCD
 
 ## Random Notes
 

@@ -33,7 +33,7 @@ spec:
           name: registry-metadata-db--basic-auth
   postgresql:
     parameters:
-      max_connections: 250
+      max_connections: "250"
 
       shared_buffers: 1GB           # 25% of limit; was the 128MB default
       effective_cache_size: 2GB     # planner hint; node is shared, stay conservative
@@ -42,10 +42,10 @@ spec:
 
       # Observability
       shared_preload_libraries: pg_stat_statements
-      pg_stat_statements.max: 5000
+      pg_stat_statements.max: "5000"
       pg_stat_statements.track: top
 
-      random_page_cost: 1.1         # local-path SSD, not spinning disk
+      random_page_cost: "1.1"         # local-path SSD, not spinning disk
 ---
 # ============================================================================
 apiVersion: postgresql.cnpg.io/v1

@@ -49,6 +49,22 @@ gitlab:
     minReplicas: 1
     maxReplicas: 2
     concurrency: 10
+  gitlab-runner:
+    runners:
+      config: |
+        [[runners]]
+          [runners.cache]
+            Type = "s3"
+            Path = "runner"
+            Shared = true
+            [runners.cache.s3]
+              ServerAddress = "s3.amazonaws.com"
+              BucketName = "my_bucket_name"
+              BucketLocation = "eu-west-1"
+              Insecure = false
+              AuthenticationType = "access-key"
+      cache:
+          secretName: s3access
   toolbox:
     backups:
       objectStorage:
