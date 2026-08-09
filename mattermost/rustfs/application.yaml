@@ -1,0 +1,10 @@
+source:
+  type: git
+  repoURL: https://github.com/rustfs/rustfs.git
+  path: helm/rustfs
+  # NOTE: Downgrading from beta.12 to beta.11 due to issue with metadata
+  #       replace issues, which blocked images from being successfully
+  #       pushed to the registry
+  #
+  #       Ref: https://github.com/rustfs/rustfs/issues/5716
+  targetRevision: 1.0.0-beta.11

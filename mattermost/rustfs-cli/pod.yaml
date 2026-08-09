@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rc
+spec:
+  containers:
+    - name: rc
+      image: docker.io/rustfs/rc:v0.1.30
+      env:
+        - name: RUSTFS_URL
+          value: http://mattermost--rustfs-svc:9000
+        - name: MATTERMOST_BUCKET_LIST
+          value:
+            file-store
+      envFrom:
+        - secretRef:
+            name: rustfs--keys
+      command:
+        - sh
+        - -c
+      args:
+        - |
+          while true; do
+            echo "Connecting to RustFS..."
+            rc alias set mattermost $RUSTFS_URL $RUSTFS_ACCESS_KEY $RUSTFS_SECRET_KEY
+
+            if [ $? -eq 0 ]; then
+              break
+            else
+              sleep 10
+            fi
+          done
+
+          for bucket in $MATTERMOST_BUCKET_LIST; do
+            if rc bucket list mattermost/$bucket > /dev/null 2>&1; then
+              echo "Verified bucket exists: mattermost/$bucket"
+            else
+              echo "Creating bucket: mattermost/$bucket"
+              rc bucket create mattermost/$bucket
+            fi
+          done
+
+          while true; do sleep 10; done
+      resources: {}
