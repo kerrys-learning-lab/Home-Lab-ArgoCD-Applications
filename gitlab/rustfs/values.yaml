@@ -1,0 +1,12 @@
+secret:
+  existingSecret: rustfs--keys
+mode:
+  standalone:
+    enabled: true
+  distributed:
+    enabled: false
+affinity:
+  podAntiAffinity:
+    enabled: false
+ingress:
+  enabled: false

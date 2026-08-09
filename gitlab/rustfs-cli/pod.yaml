@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rc
+spec:
+  containers:
+    - name: rc
+      image: docker.io/rustfs/rc:v0.1.30
+      env:
+        - name: RUSTFS_URL
+          value: http://gitlab--rustfs-svc:9000
+        - name: GITLAB_BUCKET_LIST
+          value:
+            git-lfs
+            gitlab-artifacts
+            gitlab-uploads
+            gitlab-packages
+            gitlab-mr-diffs
+            gitlab-terraform-state
+            gitlab-ci-secure-files
+            gitlab-agent-plan-content
+            gitlab-dependency-proxy
+            gitlab-backups
+            gitlab-tmp
+            gitlab-registry
+            gitlab-runner-cache
+      envFrom:
+        - secretRef:
+            name: rustfs--keys
+      command:
+        - sh
+        - -c
+      args:
+        - |
+          while true; do
+            echo "Connecting to RustFS..."
+            rc alias set gitlab $RUSTFS_URL $RUSTFS_ACCESS_KEY $RUSTFS_SECRET_KEY
+
+            if [ $? -eq 0 ]; then
+              break
+            else
+              sleep 10
+            fi
+          done
+
+          for bucket in $GITLAB_BUCKET_LIST; do
+            if rc bucket list gitlab/$bucket > /dev/null 2>&1; then
+              echo "Verified bucket exists: gitlab/$bucket"
+            else
+              echo "Creating bucket: gitlab/$bucket"
+              rc bucket create gitlab/$bucket
+            fi
+          done
+
+          while true; do sleep 10; done
+      resources: {}
