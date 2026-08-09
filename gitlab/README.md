@@ -56,4 +56,6 @@ Generally speaking, the process is:
 
     ```bash
     openssl rand -base64 48
+
+    tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 32; echo
     ```
