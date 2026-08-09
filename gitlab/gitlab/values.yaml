@@ -38,10 +38,6 @@ global:
         secret: rails-storage--s3
 # Ref: https://docs.gitlab.com/charts/charts/gitlab/
 gitlab:
-  gitlab-runner:
-    # Disabled because we deploy a privileged runner via separate
-    # ArgoCD Application
-    enabled: false
   # Ref: https://docs.gitlab.com/charts/charts/gitlab/gitaly/
   gitaly:
     persistence:
@@ -79,6 +75,10 @@ registry:
   hpa:
     minReplicas: 4
     maxReplicas: 10
+gitlab-runner:
+  # Disabled because we deploy a privileged runner via separate
+  # ArgoCD Application
+  install: false
 # Temporarily disabling for ArgoCD deployment
 upgradeCheck:
   enabled: false
