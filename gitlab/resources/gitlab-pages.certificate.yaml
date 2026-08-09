@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pages
+spec:
+  secretName: pages-tls
+  dnsNames:
+    - pages-gitlab-19.westsidestreet.net
+    - "*.pages-gitlab-19.westsidestreet.net"
+    - pages.westsidestreet.net
+    - "*.pages.westsidestreet.net"
+  issuerRef:
+    kind: ClusterIssuer
+    name: acme-letsencrypt-cluster-issuer
