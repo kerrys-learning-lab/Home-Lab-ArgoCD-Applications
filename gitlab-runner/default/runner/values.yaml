@@ -3,6 +3,8 @@ runners:
   name: default
   config: |
     [[runners]]
+      request_concurrency = 2
+
       [runners.feature_flags]
         FF_ENABLE_BASH_EXIT_CODE_CHECK = true
         FF_SCRIPT_SECTIONS = true
