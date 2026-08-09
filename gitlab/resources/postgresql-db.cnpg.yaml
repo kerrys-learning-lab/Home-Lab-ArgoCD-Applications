@@ -1,0 +1,89 @@
+# ============================================================================
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: gitlab-pg
+spec:
+  instances: 1
+  imageName: registry.westsidestreet.net/home-lab/gitlab-postgresql:17.10.0-gitlab-19-x
+  bootstrap:
+    initdb:
+      owner: gitlab
+      database: gitlabhq_production
+      secret:
+        name: production-db--basic-auth
+  storage:
+    size: 10Gi
+    pvcTemplate:
+      storageClassName: cnpg-local-path
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      memory: 4Gi
+  # Performs the equivalent of 'CREATE USER ...' as required here:
+  # https://docs.gitlab.com/charts/charts/registry/metadata_database/
+  managed:
+    roles:
+      - name: registry
+        ensure: present
+        login: true
+        passwordSecret:
+          name: registry-metadata-db--basic-auth
+        connectionLimit: -1
+        inherit: true
+  postgresql:
+    parameters:
+      max_connections: "250"
+
+      shared_buffers: 1GB           # 25% of limit; was the 128MB default
+      effective_cache_size: 2GB     # planner hint; node is shared, stay conservative
+      work_mem: 8MB
+      maintenance_work_mem: 256MB
+
+      # Observability
+      pg_stat_statements.max: "5000"
+      pg_stat_statements.track: top
+
+      random_page_cost: "1.1"         # local-path SSD, not spinning disk
+---
+# ============================================================================
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: production-db
+spec:
+  name: gitlabhq_production
+  owner: gitlab
+  cluster:
+    name: gitlab-pg
+  extensions:
+    # GitLab requires these extensions, all of which are part of the custom
+    # image used above:
+    #   - amcheck
+    #   - btree_gist
+    #   - pg_trgm
+    # Ref: https://docs.gitlab.com/charts/advanced/external-db/
+    - name: amcheck
+      ensure: present
+    - name: btree_gist
+      ensure: present
+    - name: pg_trgm
+      ensure: present
+---
+# ============================================================================
+# Performs the equivalent of 'CREATE DATABASE ...' as required here:
+# https://docs.gitlab.com/charts/charts/registry/metadata_database/
+#
+# (no extensions required)
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: registry-metadata-db
+spec:
+  name: registry
+  owner: registry
+  cluster:
+    name: gitlab-pg
+  databaseReclaimPolicy: retain
