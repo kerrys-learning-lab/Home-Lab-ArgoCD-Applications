@@ -17,6 +17,6 @@ spec:
       mode: builtin
   fileStore:
     external:
-      url: http://mattermost--rustfs-svc:9000
+      url: mattermost--rustfs-svc:9000
       bucket: file-store
       secret: mattermost-file-store--s3
