@@ -3,7 +3,7 @@ runners:
   name: default
   config: |
     [[runners]]
-      request_concurrency = 15
+      request_concurrency = 10
 
       [runners.feature_flags]
         FF_ENABLE_BASH_EXIT_CODE_CHECK = true
@@ -29,6 +29,7 @@ runners:
   cache:
     secretName: runner-cache--s3
   secret: runner--token
-concurrent: 10
+concurrent: 5
+replicas: 4
 rbac:
   create: true
