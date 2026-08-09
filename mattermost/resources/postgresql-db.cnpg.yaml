@@ -1,0 +1,23 @@
+# ============================================================================
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: mattermost-pg
+spec:
+  instances: 1
+  bootstrap:
+    initdb:
+      owner: mmuser
+      database: mattermost
+      secret:
+        name: production-db--basic-auth
+  storage:
+    size: 10Gi
+    pvcTemplate:
+      storageClassName: cnpg-local-path
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      memory: 4Gi
