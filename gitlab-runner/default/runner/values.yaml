@@ -26,7 +26,7 @@ runners:
           AuthenticationType = "access-key"
   cache:
     secretName: runner-cache--s3
-  secret: gitlab-runner
+  secret: runner--token
 concurrent: 2
 rbac:
   create: true
