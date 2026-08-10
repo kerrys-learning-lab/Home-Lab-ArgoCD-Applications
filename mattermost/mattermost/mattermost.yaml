@@ -17,3 +17,17 @@ spec:
       url: mattermost--rustfs-svc:9000
       bucket: file-store
       secret: mattermost-file-store--s3
+  mattermostEnv:
+    - name: MM_FILESETTINGS_AMAZONS3SSL
+      value: "false"
+    - name: MM_SERVICESETTINGS_SITEURL
+      value: "https://mattermost.westsidestreet.net"
+    - name: MM_SERVICESETTINGS_ENABLEBOTACCOUNTCREATION
+      value: "true"
+    - name: MM_SERVICESETTINGS_ENABLEUSERACCESSTOKENS
+      value: "true"
+  probes:
+    livenessProbe:
+      initialDelaySeconds: 90
+    readinessProbe:
+      initialDelaySeconds: 30
