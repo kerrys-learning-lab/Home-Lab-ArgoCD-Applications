@@ -10,3 +10,7 @@ affinity:
     enabled: false
 ingress:
   enabled: false
+storageclass:
+  name: smb-2025-11-01
+  dataStorageSize: 25Gi
+  logStorageSize: 2Gi
