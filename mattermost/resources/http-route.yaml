@@ -1,0 +1,37 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mattermost
+spec:
+  parentRefs:
+    - name: mattermost
+      sectionName: websecure
+  hostnames:
+    - mattermost.westsidestreet.net
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: mattermost
+          port: 8065
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mattermost-https-redirect
+spec:
+  parentRefs:
+    - name: mattermost
+      sectionName: web
+  hostnames:
+    - mattermost.westsidestreet.net
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            port: 443
+            statusCode: 301

@@ -1,0 +1,27 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: mattermost
+spec:
+  gatewayClassName: traefik
+  listeners:
+    - name: websecure
+      protocol: HTTPS
+      port: 8443
+      hostname: mattermost.westsidestreet.net
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: mattermost-tls
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: web
+      protocol: HTTP
+      port: 8000
+      hostname: mattermost.westsidestreet.net
+      allowedRoutes:
+        namespaces:
+          from: Same
