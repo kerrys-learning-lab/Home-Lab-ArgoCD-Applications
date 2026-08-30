@@ -1,0 +1,8 @@
+auth:
+  htpasswd:
+    existingSecret: bazel-build-cache--htpasswd
+config:
+  maxSize: 25
+ingress:
+  tls:
+    secretName: bazel-build-cache-tls
