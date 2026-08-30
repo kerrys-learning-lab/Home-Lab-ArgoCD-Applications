@@ -1,6 +1,6 @@
 gitlabUrl: https://gitlab.westsidestreet.net
 runners:
-  name: default
+  name: nvidia-5080
   config: |
     [[runners]]
       request_concurrency = 10
