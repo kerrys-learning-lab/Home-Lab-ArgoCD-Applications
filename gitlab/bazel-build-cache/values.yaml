@@ -2,6 +2,7 @@ auth:
   htpasswd:
     existingSecret: bazel-build-cache--htpasswd
 config:
+  allowUnauthenticatedReads: true
   maxSize: 25
 ingress:
   tls:
