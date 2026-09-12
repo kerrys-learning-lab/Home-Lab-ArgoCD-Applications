@@ -1,5 +1,5 @@
 source:
   type: helm
   repoURL: https://charts.gitlab.io
-  targetRevision: 0.91.0
+  targetRevision: 0.92.0
   chart: gitlab-runner
