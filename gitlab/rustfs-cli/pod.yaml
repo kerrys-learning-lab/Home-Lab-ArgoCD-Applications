@@ -24,6 +24,7 @@ spec:
             gitlab-tmp
             gitlab-registry
             gitlab-runner-cache
+            gitlab-pages
       envFrom:
         - secretRef:
             name: rustfs--keys

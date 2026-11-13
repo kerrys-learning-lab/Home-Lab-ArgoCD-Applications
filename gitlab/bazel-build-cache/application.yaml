@@ -1,0 +1,5 @@
+source:
+  type: git
+  repoURL: git@gitlab.westsidestreet.net:kerrys-learning-lab/helm-charts/bazel-remote-build-cache.git
+  targetRevision: main
+  path: .
