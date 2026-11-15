@@ -1,0 +1,4 @@
+image:
+  name: blakeblackshear/frigate
+  version: 0.18.2
+  repository: ghcr.io
